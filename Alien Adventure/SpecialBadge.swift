@@ -10,10 +10,16 @@ import SpriteKit
 
 class SpecialBadge: Badge {
     
+//    enum BadgeAnimation: Int {
+//        case GrowAndShrink
+//        case Rotate
+//        case Shake
+//    }
+    //enum cases should be written in lowerCamelCase (e.g. growAndShrink).
     enum BadgeAnimation: Int {
-        case GrowAndShrink
-        case Rotate
-        case Shake
+        case growAndShrink
+        case rotate
+        case shake
     }
     
     let actionNumber = arc4random_uniform(3)
@@ -40,15 +46,15 @@ class SpecialBadge: Badge {
         }
         
         switch (badgeAnimation) {
-        case .GrowAndShrink:
+        case .growAndShrink:
             let action1 = SKAction.scale(to: 0.8, duration: 1.0)
             let action2 = SKAction.scale(to: 1.1, duration: 1.0)
             let sequencedAction = SKAction.sequence([action1, action2])
             self.run(SKAction.repeatForever(sequencedAction))
-        case .Rotate:
+        case .rotate:
             let action = SKAction.rotate(byAngle: CGFloat(-M_PI), duration: 1.5)
             self.run(SKAction.repeatForever(action))
-        case .Shake:
+        case .shake:
             let sequencedAction = SKAction.sequence(actionsArray)
             self.run(SKAction.repeatForever(sequencedAction))
         }
